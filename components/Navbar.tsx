@@ -9,6 +9,7 @@ import { IoMdAdd } from 'react-icons/io';
 import Logo from '../utils/tiktik-logo.png';
 
 const Navbar = () => {
+  const user = false;
   return (
     <div className='w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4'>
       <Link href='/'>
@@ -21,6 +22,17 @@ const Navbar = () => {
           ></Image>
         </div>
       </Link>
+      <div>SEARCH</div>
+      <div>
+        {user ? (
+          <div>Logged In</div>
+        ) : (
+          <GoogleLogin
+            onSuccess={(response) => console.log(response)}
+            onError={() => console.log('Error')}
+          />
+        )}
+      </div>
     </div>
   );
 };
