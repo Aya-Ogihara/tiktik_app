@@ -36,8 +36,8 @@ const Upload = () => {
   };
 
   return (
-    <div className='flex w-full h-full'>
-      <div className='bg-white rounded-lg'>
+    <div className='flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#f8f8f8] justify-center'>
+      <div className='bg-white rounded-lg lx:h-[80vh] flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
         <div>
           <div>
             <p className='text-2xl font-bold'>Upload video</p>
@@ -51,7 +51,14 @@ const Upload = () => {
             ) : (
               <div>
                 {videoAsset ? (
-                  <div></div>
+                  <div>
+                    <video
+                      src={videoAsset.url}
+                      loop
+                      controls
+                      className='rounded-xl h-[450px] mt-16 bg-black'
+                    ></video>
+                  </div>
                 ) : (
                   <label className='cursor-pointer'>
                     <div className='flex flex-col items-center justify-center h-full'>
@@ -83,7 +90,16 @@ const Upload = () => {
                 )}
               </div>
             )}
+            {wrongFileType && (
+              <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[250px] '>
+                Please select a video file
+              </p>
+            )}
           </div>
+        </div>
+        <div className='flex flex-col gap-3 '>
+          <label className='text-md font-medium'>Caption</label>
+          <input type='text' value='' onChange={() => {}} />
         </div>
       </div>
     </div>
