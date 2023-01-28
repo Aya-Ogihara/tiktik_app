@@ -19,6 +19,8 @@ const Upload = () => {
   const [category, setCategory] = useState(topics[0].name);
   const [savingPost, setSavingPost] = useState(false);
 
+  const router = useRouter();
+
   const { userProfile }: { userProfile: any } = useAuthStore();
 
   const uploadVideo = async (e: any) => {
@@ -62,6 +64,9 @@ const Upload = () => {
         },
         topic: 'category',
       };
+
+      await axios.post('http://localhost:3000/api/post', document);
+      router.push('/');
     }
   };
 
